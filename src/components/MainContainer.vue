@@ -11,52 +11,11 @@
     <!-- End of Header -->
     </div>
   </div>
-  <div class="container col-md-12">
-    <figure v-masonry="containerId" v-for="(image, index) in images" :key= image  class="mt-2" >
+  <div class="container col-md-12 mb-3" v-for="images in Dinnerimages" :key= images >
+    <figure v-masonry="containerId"   v-for="(image, index) in images" :key= image  class="" >
+
       <div v-if=" index  === 0 || index === 6">
       <img :src= "require('../assets/' + image)" :alt="index" class="normal">
-      </div>
-      <div v-else-if="index === 1 || index === 5">
-          <img :src= "require('../assets/' + image)" :alt="index" class="high">
-      </div>
-      <div v-else-if="index === 2 || index === 4">
-          <img :src= "require('../assets/' + image)" :alt="index" class="medium">
-      </div>
-      <div v-else >
-          <img :src= "require('../assets/' + image)" :alt="index" class="low">
-      </div>
-    </figure>
-    <figure v-masonry="containerId" v-for="(image, index) in images2" :key= image  class="mt-2">
-      <div v-if=" index  === 0 || index === 6" style="postion:relative; top:10px">
-      <img :src= "require('../assets/' + image)" :alt="index" class="" >
-      </div>
-      <div v-else-if="index === 1 || index === 5">
-          <img :src= "require('../assets/' + image)" :alt="index" class="high">
-      </div>
-      <div v-else-if="index === 2 || index === 4">
-          <img :src= "require('../assets/' + image)" :alt="index" class="medium">
-      </div>
-      <div v-else >
-          <img :src= "require('../assets/' + image)" :alt="index" class="low">
-      </div>
-    </figure>
-    <figure v-masonry="containerId" v-for="(image, index) in images3" :key= image  class="mt-1">
-      <div v-if=" index  === 0 || index === 6" style="postion:relative; top:10px">
-      <img :src= "require('../assets/' + image)" :alt="index" class="" >
-      </div>
-      <div v-else-if="index === 1 || index === 5">
-          <img :src= "require('../assets/' + image)" :alt="index" class="high">
-      </div>
-      <div v-else-if="index === 2 || index === 4">
-          <img :src= "require('../assets/' + image)" :alt="index" class="medium">
-      </div>
-      <div v-else >
-          <img :src= "require('../assets/' + image)" :alt="index" class="low">
-      </div>
-    </figure>
-    <figure v-masonry="containerId" v-for="(image, index) in images4" :key= image  class=" mt-1" style="overflow:hidden;">
-      <div v-if=" index  === 0 || index === 6" style="postion:relative; top:10px">
-      <img :src= "require('../assets/' + image)" :alt="index" class="" >
       </div>
       <div v-else-if="index === 1 || index === 5">
           <img :src= "require('../assets/' + image)" :alt="index" class="high">
@@ -76,10 +35,7 @@
 export default {
     data(){
       return{
-        images: ["diner.jpeg","diner2.jpeg", "diner3.jpeg", "diner4.jpeg", "diner5.jpeg", "diner1.jpeg", "diner6.jpeg"],
-        images2: ["diner7.jpeg","diner8.jpeg", "diner9.jpeg", "diner10.jpeg", "diner11.jpeg", "diner12.jpeg", "diner13.jpeg"],
-        images3: ["diner14.jpeg","diner15.jpeg", "diner16.jpeg", "diner17.jpeg", "diner18.jpeg", "diner19.jpeg", "diner20.jpeg"],
-        images4: ["diner21.jpeg","diner22.jpeg", "diner23.jpeg", "diner24.jpeg", "diner25.jpeg", "diner26.jpeg", "diner27.jpeg"]
+        Dinnerimages: [["diner.jpeg","diner2.jpeg", "diner3.jpeg", "diner4.jpeg", "diner5.jpeg", "diner1.jpeg", "diner6.jpeg"],["diner7.jpeg","diner8.jpeg", "diner9.jpeg", "diner10.jpeg", "diner11.jpeg", "diner12.jpeg", "diner13.jpeg"],["diner14.jpeg","diner15.jpeg", "diner16.jpeg", "diner17.jpeg", "diner18.jpeg", "diner19.jpeg", "diner20.jpeg"],["diner21.jpeg","diner22.jpeg", "diner23.jpeg", "diner24.jpeg", "diner25.jpeg", "diner26.jpeg", "diner27.jpeg"]],
       }
     }
 }
@@ -97,14 +53,14 @@ body {
 }
 
 img {
-  max-width: 100%;
+  max-width: 220px;
   display: block;
   visibility: visible;
-  position: sticky;
+  /* position: sticky; */
   bottom: 0;
   border-radius: 15px;
   top: 10px;
-  /* height: 300px; */
+  height: 300px;
 }
 
 figure {
@@ -112,6 +68,7 @@ figure {
   display: grid;
   grid-template-rows: 1fr auto;
   max-height: inherit;
+  height: inherit;
 }
 
 figure > img {
@@ -134,17 +91,11 @@ figcaption {
 
 .container {
   position: relative;
-  left: 0px;
+  width: inherit;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-flow: dense;
-  gap: 20px;
-  height: 80%;
-  /* background-color: red; */
-}
-.card{
-  margin: 10px;
-  width: 150%;
+  gap: 10px;
 }
 .landscape {
   grid-column-end: span 2;
@@ -172,6 +123,5 @@ figcaption {
   top: 250px;
   height: 250px;
   max-height: inherit;
-  overflow-y: hidden;
 }
 </style>
